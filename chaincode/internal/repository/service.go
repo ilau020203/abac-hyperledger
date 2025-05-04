@@ -9,10 +9,10 @@ type Service struct {
 	ctx              contractapi.TransactionContextInterface
 }
 
-func NewService(ctx contractapi.TransactionContextInterface) *Service {
+func NewService() *Service {
 	return &Service{
-		simpleRepository: NewSimpleRepository(ctx),
-		ctx:              ctx,
+		simpleRepository: NewSimpleRepository(nil),
+		ctx:              nil,
 	}
 }
 

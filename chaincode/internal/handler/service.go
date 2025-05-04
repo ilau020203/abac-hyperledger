@@ -15,6 +15,10 @@ type SimpleChaincode struct {
 	repoService   *repository.Service
 }
 
+func NewService(businessService *businesslogic.Service, repoService *repository.Service) *SimpleChaincode {
+	return NewAssetHandler(businessService, repoService)
+}
+
 func NewAssetHandler(businessService *businesslogic.Service, repoService *repository.Service) *SimpleChaincode {
 	return &SimpleChaincode{
 		simpleService: businessService.Simple(),

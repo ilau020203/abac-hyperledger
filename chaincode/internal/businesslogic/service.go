@@ -26,11 +26,11 @@ type Service struct {
 	ctx           contractapi.TransactionContextInterface
 }
 
-func NewService(repoService *repository.Service, ctx contractapi.TransactionContextInterface) *Service {
+func NewService(repoService *repository.Service) *Service {
 	return &Service{
-		simpleService: NewSimpleService(repoService.SimpleRepo(), ctx),
+		simpleService: NewSimpleService(repoService.SimpleRepo(), nil),
 		repoService:   repoService,
-		ctx:           ctx,
+		ctx:           nil,
 	}
 }
 
