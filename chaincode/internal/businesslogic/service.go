@@ -140,3 +140,17 @@ func (s *SimpleService) QueryAccount(id string) (int, error) {
 
 	return account.Value, nil
 }
+
+func (s *SimpleService) DeleteAccount(id string) error {
+	s.Repository.SetContext(s.Ctx)
+
+	exists, err := s.Repository.AccountExists(id)
+	if err != nil {
+		return fmt.Errorf("failed to check if account exists: %v", err)
+	}
+	if !exists {
+		return fmt.Errorf("account %s does not exist", id)
+	}
+
+	return s.Repository.DeleteAccount(id)
+}

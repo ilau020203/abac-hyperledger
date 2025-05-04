@@ -67,3 +67,10 @@ func (h *SimpleChaincode) Query(ctx contractapi.TransactionContextInterface, nam
 
 	return strconv.Itoa(value), nil
 }
+
+func (h *SimpleChaincode) Delete(ctx contractapi.TransactionContextInterface, name string) error {
+	h.simpleService.Ctx = ctx
+	h.repoService.SetContext(ctx)
+
+	return h.simpleService.DeleteAccount(name)
+}
